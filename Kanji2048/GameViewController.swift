@@ -13,6 +13,7 @@ class GameViewController: UIViewController, UIGestureRecognizerDelegate {
     @IBOutlet weak var boardView: UIView!
     @IBOutlet weak var maxScoreLabel: UILabel!
     @IBOutlet weak var scoreLabel: UILabel!
+    @IBOutlet weak var backButton: UIButton!
     
     //設定から引き継ぐ変数
     var boardNum:Int = 4
@@ -91,6 +92,14 @@ class GameViewController: UIViewController, UIGestureRecognizerDelegate {
         scoreTextLabel.font = scoreLabel.font.withSize(CGFloat(20))
         scoreLabel.addSubview(scoreTextLabel)
         
+        backButton.backgroundColor = UIColor{_ in return #colorLiteral(red: 0.9995340705, green: 0.988355577, blue: 0.4726552367, alpha: 1)}
+        backButton.layer.masksToBounds = true
+        backButton.layer.cornerRadius = 20
+        backButton.setTitle("タイトルへ戻る", for: .normal)
+        backButton.setTitleColor(UIColor.black, for: .normal)
+        backButton.titleLabel?.textAlignment = NSTextAlignment.center
+        backButton.titleLabel?.font = backButton.titleLabel?.font.withSize(CGFloat(20))
+        
         coloring = userDefaults.bool(forKey: "COLOR")
         numbering = userDefaults.bool(forKey: "NUMBER")
         boardNum = userDefaults.integer(forKey: "BOARD_NUM")
@@ -132,6 +141,11 @@ class GameViewController: UIViewController, UIGestureRecognizerDelegate {
         setBoard(boardArray)
     }
     
+    @IBAction func backButtonHandle(_ sender: Any) {
+        soundPlayer("buttonSound")
+        self.presentingViewController?.presentingViewController?.dismiss(animated: true, completion: nil)
+    }
+    
     func initGame(){
         boardArray = Array<[TileData]>(repeating: Array<TileData>(repeating: TileData(), count: boardNum), count: boardNum)
         for i in 0 ..< boardNum{
@@ -158,6 +172,8 @@ class GameViewController: UIViewController, UIGestureRecognizerDelegate {
         let random = Int.random(in: 0 ..< str.count)
         let index = str.index(str.startIndex, offsetBy: random)
         boardArray[i][j].char = str[index].description
+        userDefaults.set(true, forKey: str[index].description)
+        userDefaults.synchronize()
     }
     
     func setBoard(_ board: [[TileData]]){

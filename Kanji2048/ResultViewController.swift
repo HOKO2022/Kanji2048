@@ -51,7 +51,7 @@ class ResultViewController: UIViewController {
         
         backButton.backgroundColor = UIColor.lightGray
         backButton.layer.masksToBounds = true
-        backButton.layer.cornerRadius = 5
+        backButton.layer.cornerRadius = 20
         backButton.setTitle("タイトルへ戻る", for: .normal)
         backButton.setTitleColor(UIColor.black, for: .normal)
         backButton.titleLabel?.textAlignment = NSTextAlignment.center
@@ -126,7 +126,7 @@ class ResultViewController: UIViewController {
     
     @IBAction func backButtonHandle(_ sender: Any) {
         soundPlayer("buttonSound")
-        self.presentingViewController?.presentingViewController?.dismiss(animated: true, completion: nil)
+        self.presentingViewController?.presentingViewController?.presentingViewController?.dismiss(animated: true, completion: nil)
     }
     
     func soundPlayer(_ name:String){

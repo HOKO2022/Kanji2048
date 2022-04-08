@@ -22,6 +22,8 @@ class ViewController: UIViewController {
     let userDefaults:UserDefaults = UserDefaults.standard
     let scoreTextLabel = UILabel()
     
+    let buttonRad = CGFloat(20)
+    
     var player: AVAudioPlayer?
 
     override func viewDidLoad() {
@@ -47,9 +49,9 @@ class ViewController: UIViewController {
         scoreTextLabel.font = scoreLabel.font.withSize(CGFloat(20))
         scoreLabel.addSubview(scoreTextLabel)
         
-        colorOnButton.backgroundColor = UIColor.lightGray
+        colorOnButton.backgroundColor = UIColor{_ in return #colorLiteral(red: 1, green: 0.4932718873, blue: 0.4739984274, alpha: 1)}//UIColor.lightGray
         colorOnButton.layer.masksToBounds = true
-        colorOnButton.layer.cornerRadius = 5
+        colorOnButton.layer.cornerRadius = buttonRad
         colorOnButton.setTitleColor(UIColor.black, for: .normal)
         colorOnButton.titleLabel?.textAlignment = NSTextAlignment.center
         colorOnButton.titleLabel?.font = colorOnButton.titleLabel?.font.withSize(CGFloat(20))
@@ -59,9 +61,9 @@ class ViewController: UIViewController {
             colorOnButton.setTitle("色彩なし", for: .normal)
         }
         
-        colorOffButton.backgroundColor = UIColor.lightGray
+        colorOffButton.backgroundColor = UIColor{_ in return #colorLiteral(red: 1, green: 0.4932718873, blue: 0.4739984274, alpha: 1)}//UIColor.lightGray
         colorOffButton.layer.masksToBounds = true
-        colorOffButton.layer.cornerRadius = 5
+        colorOffButton.layer.cornerRadius = buttonRad
         colorOffButton.setTitleColor(UIColor.black, for: .normal)
         colorOffButton.titleLabel?.textAlignment = NSTextAlignment.center
         colorOffButton.titleLabel?.font = colorOffButton.titleLabel?.font.withSize(CGFloat(20))
@@ -71,9 +73,9 @@ class ViewController: UIViewController {
             colorOffButton.setTitle("画数表示なし", for: .normal)
         }
         
-        button4.backgroundColor = UIColor{_ in return #colorLiteral(red: 0.4500938654, green: 0.9813225865, blue: 0.4743030667, alpha: 1)}
+        button4.backgroundColor = UIColor{_ in return #colorLiteral(red: 0.9995340705, green: 0.988355577, blue: 0.4726552367, alpha: 1)}//UIColor{_ in return #colorLiteral(red: 0.4500938654, green: 0.9813225865, blue: 0.4743030667, alpha: 1)}
         button4.layer.masksToBounds = true
-        button4.layer.cornerRadius = 5
+        button4.layer.cornerRadius = buttonRad
         button4.setTitle("4×4", for: .normal)
         button4.setTitleColor(UIColor.black, for: .normal)
         button4.titleLabel?.textAlignment = NSTextAlignment.center
@@ -84,7 +86,7 @@ class ViewController: UIViewController {
         
         button6.backgroundColor = UIColor{_ in return #colorLiteral(red: 0.9995340705, green: 0.988355577, blue: 0.4726552367, alpha: 1)}
         button6.layer.masksToBounds = true
-        button6.layer.cornerRadius = 5
+        button6.layer.cornerRadius = buttonRad
         button6.setTitle("6×6", for: .normal)
         button6.setTitleColor(UIColor.black, for: .normal)
         button6.titleLabel?.textAlignment = NSTextAlignment.center
@@ -93,9 +95,9 @@ class ViewController: UIViewController {
             enableButton6(false)
         }
         
-        button8.backgroundColor = UIColor{_ in return #colorLiteral(red: 1, green: 0.4932718873, blue: 0.4739984274, alpha: 1)}
+        button8.backgroundColor = UIColor{_ in return #colorLiteral(red: 0.9995340705, green: 0.988355577, blue: 0.4726552367, alpha: 1)}//UIColor{_ in return #colorLiteral(red: 1, green: 0.4932718873, blue: 0.4739984274, alpha: 1)}
         button8.layer.masksToBounds = true
-        button8.layer.cornerRadius = 5
+        button8.layer.cornerRadius = buttonRad
         button8.setTitle("8×8", for: .normal)
         button8.setTitleColor(UIColor.black, for: .normal)
         button8.titleLabel?.textAlignment = NSTextAlignment.center
@@ -104,13 +106,13 @@ class ViewController: UIViewController {
             enableButton8(false)
         }
         
-        startButton.backgroundColor = UIColor.lightGray
+        startButton.backgroundColor = UIColor{_ in return #colorLiteral(red: 0.4500938654, green: 0.9813225865, blue: 0.4743030667, alpha: 1)}//UIColor{_ in return #colorLiteral(red: 0.001635324071, green: 0.09160238673, blue: 1, alpha: 1)}
         startButton.layer.masksToBounds = true
-        startButton.layer.cornerRadius = 5
-        startButton.setTitle("START", for: .normal)
+        startButton.layer.cornerRadius = startButton.frame.size.height / 2
+        startButton.setTitle("スタート", for: .normal)
         startButton.setTitleColor(UIColor.black, for: .normal)
         startButton.titleLabel?.textAlignment = NSTextAlignment.center
-        startButton.titleLabel?.font = startButton.titleLabel?.font.withSize(CGFloat(20))
+        startButton.titleLabel?.font = startButton.titleLabel?.font.withSize(CGFloat(30))
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -273,11 +275,11 @@ class ViewController: UIViewController {
     func enableButton4(_ yes:Bool){
         if yes{
             button4.isEnabled = true
-            button4.backgroundColor = UIColor{_ in return #colorLiteral(red: 0.4500938654, green: 0.9813225865, blue: 0.4743030667, alpha: 1)}
+            button4.backgroundColor = UIColor{_ in return #colorLiteral(red: 0.9995340705, green: 0.988355577, blue: 0.4726552367, alpha: 1)}//UIColor{_ in return #colorLiteral(red: 0.4500938654, green: 0.9813225865, blue: 0.4743030667, alpha: 1)}
             button4.setTitleColor(UIColor.black, for: .normal)
         } else {
             button4.isEnabled = false
-            button4.backgroundColor = UIColor{_ in return #colorLiteral(red: 0, green: 0.5603182912, blue: 0, alpha: 1)}
+            button4.backgroundColor = UIColor{_ in return #colorLiteral(red: 0.5738074183, green: 0.5655357838, blue: 0, alpha: 1)}//UIColor{_ in return #colorLiteral(red: 0, green: 0.5603182912, blue: 0, alpha: 1)}
             button4.setTitleColor(UIColor.white, for: .normal)
         }
     }
@@ -297,11 +299,11 @@ class ViewController: UIViewController {
     func enableButton8(_ yes:Bool){
         if yes{
             button8.isEnabled = true
-            button8.backgroundColor = UIColor{_ in return #colorLiteral(red: 1, green: 0.4932718873, blue: 0.4739984274, alpha: 1)}
+            button8.backgroundColor = UIColor{_ in return #colorLiteral(red: 0.9995340705, green: 0.988355577, blue: 0.4726552367, alpha: 1)}//UIColor{_ in return #colorLiteral(red: 1, green: 0.4932718873, blue: 0.4739984274, alpha: 1)}
             button8.setTitleColor(UIColor.black, for: .normal)
         } else {
             button8.isEnabled = false
-            button8.backgroundColor = UIColor{_ in return #colorLiteral(red: 0.5807225108, green: 0.066734083, blue: 0, alpha: 1)}
+            button8.backgroundColor = UIColor{_ in return #colorLiteral(red: 0.5738074183, green: 0.5655357838, blue: 0, alpha: 1)}//UIColor{_ in return #colorLiteral(red: 0.5807225108, green: 0.066734083, blue: 0, alpha: 1)}
             button8.setTitleColor(UIColor.white, for: .normal)
         }
     }
